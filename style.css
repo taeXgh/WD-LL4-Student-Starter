@@ -1,34 +1,133 @@
+/* Rotating surprise message animation */
+.rotating-surprise {
+  position: relative;
+  height: 80px;
+  min-width: 400px;
+  max-width: 99vw;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.rotating-surprise .boost-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  animation: rotateSurprise 10s linear infinite;
+}
+.rotating-surprise .boost-text:nth-child(1) {
+  animation-delay: 0s;
+}
+.rotating-surprise .boost-text:nth-child(2) {
+  animation-delay: 2s;
+}
+.rotating-surprise .boost-text:nth-child(3) {
+  animation-delay: 4s;
+}
+.rotating-surprise .boost-text:nth-child(4) {
+  animation-delay: 6s;
+}
+.rotating-surprise .boost-text:nth-child(5) {
+  animation-delay: 8s;
+}
+
+@keyframes rotateSurprise {
+  0% { opacity: 0; transform: translateY(20px); }
+  5% { opacity: 1; transform: translateY(0); }
+  20% { opacity: 1; transform: translateY(0); }
+  25% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 0; }
+}
+
 html {
   height: 100%;
   width: 100%;
 }
+
+:root {
+  --deep-wine: #550c18;
+  --navy: #1c3144;
+  --cream: #efe9e7;
+  --burnt-orange: #ba5a31;
+  --brown: #a57f60;
+}
+
 body {
-  font-family: sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: linear-gradient(135deg, var(--cream) 0%, var(--brown) 50%, var(--burnt-orange) 100%);
+  color: var(--navy);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
 }
 
+
+
 .boost-box {
-  background-color: #7fc8fb;
+  background-color: var(--brown);
   padding: 20px;
-  margin: 40px;
+  margin: 40px auto;
   width: 300px;
   border-radius: 10px;
   text-align: center;
+  box-shadow: 0 4px 16px var(--deep-wine, #550c18);
 }
 
-.boost-button{
-  background-color: #ff6392;
-  color: #ffe45e;
-  padding: 10px 20px;
+.boost-button {
+  background: linear-gradient(90deg, var(--burnt-orange) 0%, var(--deep-wine) 100%);
+  color: var(--cream);
+  padding: 12px 28px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 16px var(--navy, #1c3144);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  outline: none;
 }
 
 .boost-button:hover {
-  background-color: rgb(69, 12, 12);
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 8px 24px var(--deep-wine, #550c18);
+  background: linear-gradient(90deg, var(--deep-wine) 0%, var(--burnt-orange) 100%);
+}
+.boost-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px var(--navy, #1c3144);
+  background: linear-gradient(90deg, var(--burnt-orange) 0%, var(--deep-wine) 100%);
+}
+
+/* Surprise section styles */
+.boost-text {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--burnt-orange);
+  background: none;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 var(--cream), 0 2px 8px var(--deep-wine);
+  border-radius: 8px;
+  padding: 8px 0;
+}
+
+/* Make emojis in boost-text always visible and colored */
+.boost-text .emoji {
+  color: initial;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  background-clip: initial;
+  text-fill-color: initial;
+}
 }
