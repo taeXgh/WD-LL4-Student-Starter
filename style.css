@@ -2,3 +2,16 @@ html {
   height: 100%;
   width: 100%;
 }
+body {
+  font-family: sans-serif;
+  background-color: rgb(64, 224, 208);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.boost-box {
+  background-color: #ffe8cc;
+  border: 4px solid #d2691e;
+}
